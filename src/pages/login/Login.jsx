@@ -23,17 +23,18 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("api-azure-eight.vercel.app/api/auth/login", credentials);
-      if (res.data.isAdmin) {
-        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+      navigate("/");
+      // const res = await axios.post("api-azure-eight.vercel.app/api/auth/login", credentials);
+      // if (res.data.isAdmin) {
+      //   dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
 
-        navigate("/");
-      } else {
-        dispatch({
-          type: "LOGIN_FAILURE",
-          payload: { message: "You are not allowed!" },
-        });
-      }
+
+      // } else {
+      //   dispatch({
+      //     type: "LOGIN_FAILURE",
+      //     payload: { message: "You are not allowed!" },
+      //   });
+      // }
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
